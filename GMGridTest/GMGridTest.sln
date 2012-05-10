@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMGridTest", "GMGridTest\GMGridTest.csproj", "{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMGridView", "..\GMGridView\GMGridView.csproj", "{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Debug|iPhone.Build.0 = Debug|iPhone
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Release|iPhone.ActiveCfg = Release|iPhone
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Release|iPhone.Build.0 = Release|iPhone
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{3FF2442F-2CF1-42B8-B40D-7BE1FF52C34C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Release|iPhone.Build.0 = Release|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = GMGridTest\GMGridTest.csproj
+	EndGlobalSection
+EndGlobal
