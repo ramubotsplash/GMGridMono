@@ -40,14 +40,6 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Xamarin.ObjcBinding.CSharp.targets" />
-  <ItemGroup>
-    <Compile Include="libGMGridView.linkwith.cs">
-      <DependentUpon>libGMGridView.a</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingNativeLibrary Include="libGMGridView.a" />
-  </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -63,4 +55,12 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <ObjcBindingNativeLibrary Include="libGMGridView.a" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="libGMGridView.linkwith.cs">
+      <DependentUpon>libGMGridView.a</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
