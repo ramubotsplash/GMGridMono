@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
+    <None Include="Code.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -95,5 +96,11 @@
   <ItemGroup>
     <Content Include="batman_surfing_on_superman.png" />
     <Content Include="close_x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GMGridView\GMGridView.csproj">
+      <Project>{44D7E983-DE80-41CD-AA3C-A9EFCA4C9228}</Project>
+      <Name>GMGridView</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

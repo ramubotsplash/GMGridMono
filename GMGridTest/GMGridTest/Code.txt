@@ -1,0 +1,8 @@
+
+			//g.Style = GMGridView.GMGridViewStyle.GMGridViewStyleSwap;
+			//g.ItemSpacing = spacing;
+			//g.MinEdgeInsets = new UIEdgeInsets(spacing, spacing, spacing, spacing);
+			//g.CenterGrid = true;
+
+			//g.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+			//g.BackgroundColor = UIColor.Clear;

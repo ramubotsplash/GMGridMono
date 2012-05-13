@@ -8,7 +8,7 @@ namespace GMGridTest
 {
 	public partial class MainViewController : UIViewController
 	{
-		static bool UserInterfaceIdiomIsPhone {
+		public static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
 		}
 
@@ -24,15 +24,23 @@ namespace GMGridTest
 		{
 			base.ViewDidAppear (animated);
 			
-			LoadGrid ();
+			//LoadGrid ();
 			//LoadUITable();
+		}
+		
+		public override void LoadView ()
+		{
+			base.LoadView ();
+
+			//AddImage();
+			AddGrid();
 		}
 		
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 			
-			AddGrid();
+			LoadGrid();
 			//AddUITable();
 			//AddImage();
 		}
@@ -40,34 +48,36 @@ namespace GMGridTest
 		#region Grid Funtions
 		const int spacing = 10;
 		GMGridView.GMGridView g;
+		SlidesGridDataSource ds;
 		public void AddGrid ()
 		{
 			RectangleF bounds = View.Bounds;
 			//bounds.Width = bounds.Width/2;
+			///bounds.Y = 100;
 			bounds.Height= bounds.Height/2;
 			
-			g = new GMGridView.GMGridView(bounds);
-			//g.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-			//g.BackgroundColor = UIColor.Clear;
-			
+ 			g = new GMGridView.GMGridView(bounds);
+			//g.LayoutSubviewsWithAnimation(GMGridView.GMGridViewItemAnimation.GMGridViewItemAnimationScroll);
 			//g.Style = GMGridView.GMGridViewStyle.GMGridViewStyleSwap;
 			//g.ItemSpacing = spacing;
 			//g.MinEdgeInsets = new UIEdgeInsets(spacing, spacing, spacing, spacing);
 			//g.CenterGrid = true;
-
+			
 			View.AddSubview(g);
-			g.MainSuperView = View;
 
-			SlidesGridDataSource ds = new SlidesGridDataSource();
-			g.DataSource = ds;
-			g.ActionDelegate = new SlidesViewActionDelegate();
-			g.SortingDelegate = new SlidesSortingDelegate(ds);
-			g.TransformDelegate = new SlidesTransformationDelegate();
 		}
+		
+		
 
 		void LoadGrid ()
 		{
-			g.ReloadData();
+			ds = new SlidesGridDataSource();
+			g.DataSource = ds;
+			//g.ActionDelegate = new SlidesViewActionDelegate();
+			//g.SortingDelegate = new SlidesSortingDelegate(ds);
+			//g.TransformDelegate = new SlidesTransformationDelegate();
+			//g.MainSuperView = View;
+			//g.ReloadData();
 		}
 		
 		#endregion
@@ -105,7 +115,6 @@ namespace GMGridTest
 		
 		partial void showInfo (NSObject sender)
 		{
-			g.ReloadData();
 		}
 		
 		#region Add sample image

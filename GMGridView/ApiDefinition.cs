@@ -77,112 +77,112 @@ namespace GMGridView
 		NSObject DataSource { get; set;  }
 	
 		//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewActionDelegate> *actionDelegate;            
-		//[Export ("actionDelegate"), NullAllowed, Wrap ("WeakDelegate")]
-		//GMGridViewActionDelegate ActionDelegate { get; set;  }
+		[Export ("actionDelegate"), NullAllowed, Wrap ("WeakDelegate")]
+		GMGridViewActionDelegate ActionDelegate { get; set;  }
 	
 		//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewSortingDelegate> *sortingDelegate;          
-		//[Export ("sortingDelegate"), NullAllowed, Wrap ("WeakDelegate")]
-		//GMGridViewSortingDelegate SortingDelegate { get; set;  }
+		[Export ("sortingDelegate"), NullAllowed, Wrap ("WeakDelegate")]
+		GMGridViewSortingDelegate SortingDelegate { get; set;  }
 	
-		//@property (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewTransformationDelegate> *transformDelegate; 
-		//[Export ("transformDelegate"), NullAllowed, Wrap ("WeakDelegate")]
-		//GMGridViewTransformationDelegate TransformDelegate { get; set;  }
+		//@prop	erty (nonatomic, gm_weak) IBOutlet NSObject<GMGridViewTransformationDelegate> *transformDelegate; 
+		[Export ("transformDelegate"), NullAllowed, Wrap ("WeakDelegate")]
+		GMGridViewTransformationDelegate TransformDelegate { get; set;  }
 	
 		//@property (nonatomic, strong) IBOutlet id<GMGridViewLayoutStrategy> layoutStrategy; 
-		//[Export ("layoutStrategy"), NullAllowed]
-		//NSObject LayoutStrategy { get; set;  }
+		[Export ("layoutStrategy"), NullAllowed]
+		NSObject LayoutStrategy { get; set;  }
 	
 		//@property (nonatomic, getter=isEditing) BOOL editing; 
-		//[Export ("editing")]
-		//bool Editing { [Bind ("isEditing")] get; set;  }
+		[Export ("editing")]
+		bool Editing { [Bind ("isEditing")] get; set;  }
 	
 		//@property (nonatomic, gm_weak) IBOutlet UIView *mainSuperView;        
 		[Export ("mainSuperView"), NullAllowed]
 		UIView MainSuperView { get; set;  }
 	
 		//@property (nonatomic) GMGridViewStyle style;                          
-		//[Export ("style")]
-		//GMGridViewStyle Style { get; set;  }
+		[Export ("style")]
+		GMGridViewStyle Style { get; set;  }
 	
 		//@property (nonatomic) NSInteger itemSpacing;                          
-		//[Export ("itemSpacing")]
-		//int ItemSpacing { get; set;  }
+		[Export ("itemSpacing")]
+		int ItemSpacing { get; set;  }
 	
 		//@property (nonatomic) BOOL centerGrid;                                
-		//[Export ("centerGrid")]
-		//bool CenterGrid { get; set;  }
+		[Export ("centerGrid")]
+		bool CenterGrid { get; set;  }
 	
 		//@property (nonatomic) UIEdgeInsets minEdgeInsets;                     
-		//[Export ("minEdgeInsets")]
-		//UIEdgeInsets MinEdgeInsets { get; set;  }
+		[Export ("minEdgeInsets")]
+		UIEdgeInsets MinEdgeInsets { get; set;  }
 	
 		//@property (nonatomic) CFTimeInterval minimumPressDuration;            
-		//[Export ("minimumPressDuration")]
-		//double MinimumPressDuration { get; set;  }
+		[Export ("minimumPressDuration")]
+		double MinimumPressDuration { get; set;  }
 	
 		//@property (nonatomic) BOOL showFullSizeViewWithAlphaWhenTransforming; 
-		//[Export ("showFullSizeViewWithAlphaWhenTransforming")]
-		//bool ShowFullSizeViewWithAlphaWhenTransforming { get; set;  }
+		[Export ("showFullSizeViewWithAlphaWhenTransforming")]
+		bool ShowFullSizeViewWithAlphaWhenTransforming { get; set;  }
 
 		//- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
-		//[Export ("setEditing:animated:")]
-		//void SetEditing (bool editing, bool animated);
+		[Export ("setEditing:animated:")]
+		void SetEditing (bool editing, bool animated);
 
 		//- (GMGridViewCell *)dequeueReusableCell;                              
 		[Export ("dequeueReusableCell")]
 		GMGridViewCell DequeueReusableCell { get; }
 
 		//- (GMGridViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;
-		//[Export ("dequeueReusableCellWithIdentifier:")]
-		//GMGridViewCell DequeueReusableCellWithIdentifier (string identifier);
+		[Export ("dequeueReusableCellWithIdentifier:")]
+		GMGridViewCell DequeueReusableCellWithIdentifier (string identifier);
 
 		//- (GMGridViewCell *)cellForItemAtIndex:(NSInteger)position;           
-		//[Export ("cellForItemAtIndex:")]
-		//GMGridViewCell CellForItemAtIndex (int position);
+		[Export ("cellForItemAtIndex:")]
+		GMGridViewCell CellForItemAtIndex (int position);
 
 		//- (void)reloadData;
 		[Export ("reloadData")]
 		void ReloadData ();
 
 		//- (void)insertObjectAtIndex:(NSInteger)index animated:(BOOL)animated;
-		//[Export ("insertObjectAtIndex:animated:")]
-		//void InsertObjectAtIndex (int index, bool animated);
+		[Export ("insertObjectAtIndex:animated:")]
+		void InsertObjectAtIndex (int index, bool animated);
 
 		//- (void)insertObjectAtIndex:(NSInteger)index withAnimation:(GMGridViewItemAnimation)animation;
-		//[Export ("insertObjectAtIndex:withAnimation:")]
-		//void InsertObjectAtIndex (int index, GMGridViewItemAnimation animation);
+		[Export ("insertObjectAtIndex:withAnimation:")]
+		void InsertObjectAtIndex (int index, GMGridViewItemAnimation animation);
 
 		//- (void)removeObjectAtIndex:(NSInteger)index animated:(BOOL)animated;
-		//[Export ("removeObjectAtIndex:animated:")]
-		//void RemoveObjectAtIndex (int index, bool animated);
+		[Export ("removeObjectAtIndex:animated:")]
+		void RemoveObjectAtIndex (int index, bool animated);
 
 		//- (void)removeObjectAtIndex:(NSInteger)index withAnimation:(GMGridViewItemAnimation)animation;
-		//[Export ("removeObjectAtIndex:withAnimation:")]
-		//void RemoveObjectAtIndex (int index, GMGridViewItemAnimation animation);
+		[Export ("removeObjectAtIndex:withAnimation:")]
+		void RemoveObjectAtIndex (int index, GMGridViewItemAnimation animation);
 
 		//- (void)reloadObjectAtIndex:(NSInteger)index animated:(BOOL)animated;
-		//[Export ("reloadObjectAtIndex:animated:")]
-		//void ReloadObjectAtIndex (int index, bool animated);
+		[Export ("reloadObjectAtIndex:animated:")]
+		void ReloadObjectAtIndex (int index, bool animated);
 
 		//- (void)reloadObjectAtIndex:(NSInteger)index withAnimation:(GMGridViewItemAnimation)animation;
-		//[Export ("reloadObjectAtIndex:withAnimation:")]
-		//void ReloadObjectAtIndex (int index, GMGridViewItemAnimation animation);
+		[Export ("reloadObjectAtIndex:withAnimation:")]
+		void ReloadObjectAtIndex (int index, GMGridViewItemAnimation animation);
 
 		//- (void)swapObjectAtIndex:(NSInteger)index1 withObjectAtIndex:(NSInteger)index2 animated:(BOOL)animated;
-		//[Export ("swapObjectAtIndex:withObjectAtIndex:animated:")]
-		//void SwapObjectAtIndex (int index1, int index2, bool animated);
+		[Export ("swapObjectAtIndex:withObjectAtIndex:animated:")]
+		void SwapObjectAtIndex (int index1, int index2, bool animated);
 
 		//- (void)swapObjectAtIndex:(NSInteger)index1 withObjectAtIndex:(NSInteger)index2 withAnimation:(GMGridViewItemAnimation)animation;
-		//[Export ("swapObjectAtIndex:withObjectAtIndex:withAnimation:")]
-		//void SwapObjectAtIndex (int index1, int index2, GMGridViewItemAnimation animation);
+		[Export ("swapObjectAtIndex:withObjectAtIndex:withAnimation:")]
+		void SwapObjectAtIndex (int index1, int index2, GMGridViewItemAnimation animation);
 
 		//- (void)scrollToObjectAtIndex:(NSInteger)index atScrollPosition:(GMGridViewScrollPosition)scrollPosition animated:(BOOL)animated;
-		//[Export ("scrollToObjectAtIndex:atScrollPosition:animated:")]
-		//void ScrollToObjectAtIndex (int index, GMGridViewScrollPosition scrollPosition, bool animated);
+		[Export ("scrollToObjectAtIndex:atScrollPosition:animated:")]
+		void ScrollToObjectAtIndex (int index, GMGridViewScrollPosition scrollPosition, bool animated);
 
 		//- (void)layoutSubviewsWithAnimation:(GMGridViewItemAnimation)animation;
-		//[Export ("layoutSubviewsWithAnimation:")]
-		//void LayoutSubviewsWithAnimation (GMGridViewItemAnimation animation);
+		[Export ("layoutSubviewsWithAnimation:")]
+		void LayoutSubviewsWithAnimation (GMGridViewItemAnimation animation);
 
 	}
 
@@ -194,9 +194,9 @@ namespace GMGridView
 		[Abstract, Export ("numberOfItemsInGMGridView:")]
 		int NumberOfItemsInGMGridView (GMGridView gridView);
 
-		//- (CGSize)GMGridView:(GMGridView *)gridView sizeForItemsInInterfaceOrientation:(UIInterfaceOrientation)orientation;
-		[Abstract, Export ("GMGridView:sizeForItemsInInterfaceOrientation:")]
-		System.Drawing.SizeF SizeForItemsInInterfaceOrientation (GMGridView gridView, UIInterfaceOrientation orientation);
+			//- (CGSize)GMGridView:(GMGridView *)gridView sizeForItemsInInterfaceOrientation:(UIInterfaceOrientation)orientation;
+			[Abstract, Export ("GMGridView:sizeForItemsInInterfaceOrientation:")]
+			System.Drawing.SizeF SizeForItemsInInterfaceOrientation (GMGridView gridView, UIInterfaceOrientation orientation);
 
 		//- (GMGridViewCell *)GMGridView:(GMGridView *)gridView cellForItemAtIndex:(NSInteger)index;
 		[Abstract, Export ("GMGridView:cellForItemAtIndex:")]
@@ -207,9 +207,8 @@ namespace GMGridView
 		bool CanDeleteItemAtIndex (GMGridView gridView, int index);
 
 	}
-	
-	/*
 	[Model]
+
 	[BaseType (typeof (NSObject))]
 	interface GMGridViewActionDelegate {
 
@@ -278,7 +277,7 @@ namespace GMGridView
 		void DidEndTransformingCell (GMGridView gridView, GMGridViewCell cell);
 
 	}
-	 */
+
 	[BaseType (typeof (UIView))]
 	interface GMGridViewCell {
 

@@ -10,26 +10,27 @@ using System.Drawing;
 
 namespace GMGridTest
 {
+	
 	public partial class GMGridElement : UIViewElement, IElementSizing
 	{
-		public SlidesGridView gv;
+//		public SlidesGridView gv;
 		
 		public GMGridElement (string caption) : base (caption, new UIView(), false)
 		{
-			gv = new SlidesGridView(new RectangleF(0,0,UIScreen.MainScreen.Bounds.Width, 200));
-			gv.Setup();
-			View.AddSubview(gv);
+			//gv = new SlidesGridView(new RectangleF(0,0,UIScreen.MainScreen.Bounds.Width, 200));
+			//gv.Setup();
+			//View.AddSubview(gv);
 		}
 		
 		
 		public override UITableViewCell GetCell (UITableView tv)
 		{
 			var cell = base.GetCell (tv);
-			gv.Bounds = new System.Drawing.RectangleF(
-				cell.Bounds.Location.X,
-				cell.Bounds.Location.Y,
-			    UIScreen.MainScreen.Bounds.Width,
-			    GetHeight(null, null));
+			//gv.Bounds = new System.Drawing.RectangleF(
+			//	cell.Bounds.Location.X,
+			//	cell.Bounds.Location.Y,
+			//    UIScreen.MainScreen.Bounds.Width,
+			//    GetHeight(null, null));
 			return cell;
 		}
 		

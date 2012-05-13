@@ -5,109 +5,95 @@ using System.Collections.Generic;
 
 namespace GMGridTest
 {
-	public class SlidesGridView : GMGridView.GMGridView
-	{
-		const int spacing = 10;
-		SlidesGridDataSource ds;
-		
-		public SlidesGridView(RectangleF rect) : base(rect)  {
-			AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-			BackgroundColor = UIColor.Clear;
-			
-			Style = GMGridView.GMGridViewStyle.GMGridViewStyleSwap;
-			ItemSpacing = spacing;
-			MinEdgeInsets = new UIEdgeInsets(spacing, spacing, spacing, spacing);
-			CenterGrid = true;
-		}
-		
-		public void Setup() {
-			ds = new SlidesGridDataSource();
-			DataSource = ds;
-			ActionDelegate = new SlidesViewActionDelegate();
-			SortingDelegate = new SlidesSortingDelegate(ds);
-			TransformDelegate = new SlidesTransformationDelegate();
-		}
-	}
-	
 	public class SlidesGridDataSource : GMGridView.GMGridViewDataSource
 	{
-		public class SlideData{
-			public string Title {
-				get;
-				set;
-			}
-			
-			public string ImageUrl {
-				get;
-				set;
-			}
-		}
-		
-		public IList<SlideData> slidesData = new List<SlideData>() {
-			new SlideData() { Title = "Test1", ImageUrl = "batman_surfing_on_superman.png" },
-			new SlideData() { Title = "Test2", ImageUrl = "batman_surfing_on_superman.png" },
-			new SlideData() { Title = "Test3", ImageUrl = "batman_surfing_on_superman.png" },
-			new SlideData() { Title = "Test4", ImageUrl = "batman_surfing_on_superman.png" },
-			new SlideData() { Title = "Test5", ImageUrl = "batman_surfing_on_superman.png" },
-			new SlideData() { Title = "Test6", ImageUrl = "batman_surfing_on_superman.png" }
-		};
-		
 		public SlidesGridDataSource(){
 			Console.WriteLine("SlideDS");
 		}
 		
-		
 		public override int NumberOfItemsInGMGridView (GMGridView.GMGridView gridView)
 		{
 			Console.WriteLine("NumberOfItemsInGMGridView");
-			return slidesData.Count;
+			return 30;
 		}
 		
 		public override bool CanDeleteItemAtIndex (GMGridView.GMGridView gridView, int index)
 		{
 			Console.WriteLine("CanDeleteItemAtIndex");
-			return true;
+			return false;
 		}
 		
 		public override GMGridView.GMGridViewCell CellForItemAtIndex (GMGridView.GMGridView gridView, int index)
 		{
-			Console.WriteLine("CellForItemAtIndex");
+			Console.WriteLine("{1:yyyy-MM-dd HH:mm:ss FFF} CellForItemAtIndex: {0}", index, DateTime.Now);
 			SizeF size = this.SizeForItemsInInterfaceOrientation(gridView, UIApplication.SharedApplication.StatusBarOrientation);
 			
 			GMGridView.GMGridViewCell cell = gridView.DequeueReusableCell;
-			if (cell != null)
+			if (cell == null)
 			{
 				cell = new GMGridView.GMGridViewCell();
-				cell.DeleteButtonIcon = UIImage.FromBundle("close_x.png");
-				cell.DeleteButtonOffset = new PointF(-15, -15);
+				//cell.DeleteButtonIcon = UIImage.FromBundle("close_x.png");
+				//cell.DeleteButtonOffset = new PointF(-15, -15);
 
-				UIView view = new UIView(new RectangleF(0, 0, size.Width, size.Height));
-		        view.BackgroundColor = UIColor.Red;
-		        view.Layer.MasksToBounds = false;
-				view.Layer.CornerRadius = 8;
+				//UIView view = new UIView(new RectangleF(0, 0, size.Width, size.Height));
+		        //view.BackgroundColor = UIColor.Blue;
+		        //view.Layer.MasksToBounds = false;
+				//view.Layer.CornerRadius = 8;
 		        
-		        cell.ContentView = view;
-		    }
+		        //cell.ContentView = view;
+
+			    //UIImageView testView = new UIImageView();
+			    //testView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+			    //testView.Frame = cell.ContentView.Bounds;
+			    //testView.BackgroundColor = UIColor.Yellow;
+			    //cell.ContentView.AddSubview(testView);
+
+		    	UIImage testImg = UIImage.FromBundle(@"batman_surfing_on_superman.png");
+			    UIImageView testView = new UIImageView(testImg);
+				testView.ClipsToBounds = false;
+			    //testView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+			    //testView.Frame = new RectangleF(0, 0, size.Width, size.Height);
+			   // testView.BackgroundColor = UIColor.Yellow;
+				cell.ContentView = testView;
+			}
 		    
 		    //cell.ContentView.Subviews.R .subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 		    
-		    UIImage testImg = UIImage.FromBundle(@"batman_surfing_on_superman.png");
-		    UIImageView testView = new UIImageView(testImg);
-		    testView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
-		    testView.Frame = cell.ContentView.Bounds;
-		    testView.BackgroundColor = UIColor.Clear;
-		    cell.ContentView.AddSubview(testView);
-		    
+		    //UIImage testImg = UIImage.FromBundle(@"batman_surfing_on_superman.png");
+		    //((UIImageView)cell.ContentView.Subviews[0]).Image = testImg;
 		    return cell;
 		}
 		
 		public override System.Drawing.SizeF SizeForItemsInInterfaceOrientation (GMGridView.GMGridView gridView, UIInterfaceOrientation orientation)
 		{
-			Console.WriteLine("SizeForItemsInInterfaceOrientation");
-			return new System.Drawing.SizeF(125, 125);
+			SizeF size;
+			//Console.WriteLine("SizeForItemsInInterfaceOrientation");
+			if (MainViewController.UserInterfaceIdiomIsPhone) {
+				if (orientation == UIInterfaceOrientation.LandscapeLeft || orientation == UIInterfaceOrientation.LandscapeRight)
+		        {
+		            size = new SizeF(170.0f, 135.0f);
+		        }
+		        else
+		        {
+		            size = new SizeF(140f, 110f);
+		        }
+		    }
+		    else
+		    {
+				if (orientation == UIInterfaceOrientation.LandscapeLeft || orientation == UIInterfaceOrientation.LandscapeRight)
+		        {
+		            size = new SizeF(285.0f, 205.0f);
+		        }
+		        else
+		        {
+		            size = new SizeF(230.0f, 175.0f);
+		        }
+			}
+			Console.WriteLine("Size: {0}; {1}", size.Width, size.Height);
+			return size;
 		}
 	}
-	
+
 	public class SlidesViewActionDelegate : GMGridView.GMGridViewActionDelegate
 	{
 		#region implemented abstract members of GMGridView.GMGridViewActionDelegate
@@ -217,8 +203,6 @@ namespace GMGridTest
 			Console.WriteLine("DidEndTransformingCell");
 		}
 		#endregion
-	}
-	
-	
+	}	
 }
 
