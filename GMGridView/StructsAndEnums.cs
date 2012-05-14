@@ -20,4 +20,12 @@ namespace GMGridView
 		GMGridViewItemAnimationFade,
 		GMGridViewItemAnimationScroll = 1<<7
 	}
+
+	public enum  GMGridViewLayoutStrategyType
+	{
+		GMGridViewLayoutVertical = 0,
+		GMGridViewLayoutHorizontal,
+		GMGridViewLayoutHorizontalPagedLTR,
+		GMGridViewLayoutHorizontalPagedTTB
+	}
 }

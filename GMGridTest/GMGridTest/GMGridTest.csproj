@@ -86,6 +86,7 @@
     <Compile Include="TestImageElement.cs" />
     <Compile Include="SlidesGridView.cs" />
     <Compile Include="TestTableDataSource.cs" />
+    <Compile Include="TestViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainViewController_iPhone.xib" />

@@ -15,7 +15,7 @@ namespace GMGridTest
 	{
 		// class-level declarations
 		UIWindow window;
-		MainViewController controller;
+		TestViewController controller;
 		
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
@@ -28,7 +28,7 @@ namespace GMGridTest
 		{
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			controller = new MainViewController ();
+			controller = new TestViewController ();
 			window.RootViewController = controller;
 			window.MakeKeyAndVisible ();
 			

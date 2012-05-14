@@ -1,12 +1,10 @@
 using System;
-
-using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Drawing;
 
 namespace GMGridTest
 {
-	public partial class MainViewController : UIViewController
+	public class TestViewController : UIViewController
 	{
 		public static bool UserInterfaceIdiomIsPhone {
 			get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
@@ -14,7 +12,7 @@ namespace GMGridTest
 
 		UIPopoverController flipsidePopoverController;
 		
-		public MainViewController ()
+		public TestViewController ()
 			: base (UserInterfaceIdiomIsPhone ? "MainViewController_iPhone" : "MainViewController_iPad" , null)
 		{
 			// Custom initialization
@@ -31,6 +29,8 @@ namespace GMGridTest
 		public override void LoadView ()
 		{
 			base.LoadView ();
+			
+			this.View.BackgroundColor = UIColor.Orange;
 
 			//AddImage();
 			AddGrid();
@@ -111,11 +111,6 @@ namespace GMGridTest
 			//
 			// e.g. myOutlet.Dispose (); myOutlet = null;
 			
-			ReleaseDesignerOutlets ();
-		}
-		
-		partial void showInfo (NSObject sender)
-		{
 		}
 		
 		#region Add sample image

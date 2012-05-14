@@ -89,7 +89,7 @@ namespace GMGridView
 		GMGridViewTransformationDelegate TransformDelegate { get; set;  }
 	
 		//@property (nonatomic, strong) IBOutlet id<GMGridViewLayoutStrategy> layoutStrategy; 
-		[Export ("layoutStrategy"), NullAllowed]
+		[Export ("layoutStrategy"), NullAllowed, Wrap ("WeakDelegate")]
 		NSObject LayoutStrategy { get; set;  }
 	
 		//@property (nonatomic, getter=isEditing) BOOL editing; 
@@ -302,5 +302,164 @@ namespace GMGridView
 		void PrepareForReuse ();
 
 	}
+
+	// Layout strategy
+	[BaseType (typeof (NSObject))]
+	interface GMGridViewLayoutStrategyFactory {
+
+		//+ (id<GMGridViewLayoutStrategy>)strategyFromType:(GMGridViewLayoutStrategyType)type;
+		[Static, Export ("strategyFromType:")]
+		NSObject StrategyFromType (GMGridViewLayoutStrategyType type);
+
+	}
+	
+	[Model]
+	[BaseType (typeof (NSObject))]
+	interface GMGridViewLayoutStrategy {
+
+		//- (GMGridViewLayoutStrategyType)type;
+		[Abstract, Export ("type")]
+		GMGridViewLayoutStrategyType Type { get; }
+
+		//+ (BOOL)requiresEnablingPaging;
+		//[Static, Abstract, Export ("requiresEnablingPaging")]
+		//bool RequiresEnablingPaging { get; }
+
+		//- (void)setupItemSize:(CGSize)itemSize andItemSpacing:(NSInteger)spacing withMinEdgeInsets:(UIEdgeInsets)edgeInsets andCenteredGrid:(BOOL)centered;
+		[Abstract, Export ("setupItemSize:andItemSpacing:withMinEdgeInsets:andCenteredGrid:")]
+		void SetupItemSize (System.Drawing.SizeF itemSize, int spacing, UIEdgeInsets edgeInsets, bool centered);
+
+		//- (void)rebaseWithItemCount:(NSInteger)count insideOfBounds:(CGRect)bounds;
+		[Abstract, Export ("rebaseWithItemCount:insideOfBounds:")]
+		void RebaseWithItemCount (int count, System.Drawing.RectangleF bounds);
+
+		//- (CGSize)contentSize;
+		[Abstract, Export ("contentSize")]
+		System.Drawing.SizeF ContentSize { get; }
+
+		//- (CGPoint)originForItemAtPosition:(NSInteger)position;
+		[Abstract, Export ("originForItemAtPosition:")]
+		System.Drawing.PointF OriginForItemAtPosition (int position);
+
+		//- (NSInteger)itemPositionFromLocation:(CGPoint)location;
+		[Abstract, Export ("itemPositionFromLocation:")]
+		int ItemPositionFromLocation (System.Drawing.PointF location);
+
+		//- (NSRange)rangeOfPositionsInBoundsFromOffset:(CGPoint)offset;
+		[Abstract, Export ("rangeOfPositionsInBoundsFromOffset:")]
+		NSRange RangeOfPositionsInBoundsFromOffset (System.Drawing.PointF offset);
+
+	}
+
+	/*
+	[BaseType (typeof (NSObject))]
+	interface GMGridViewLayoutStrategyBase {
+
+		//- (void)setupItemSize:(CGSize)itemSize andItemSpacing:(NSInteger)spacing withMinEdgeInsets:(UIEdgeInsets)edgeInsets andCenteredGrid:(BOOL)centered;
+		[Export ("setupItemSize:andItemSpacing:withMinEdgeInsets:andCenteredGrid:")]
+		void SetupItemSize (System.Drawing.SizeF itemSize, int spacing, UIEdgeInsets edgeInsets, bool centered);
+
+		//- (void)setEdgeAndContentSizeFromAbsoluteContentSize:(CGSize)actualContentSize;
+		[Export ("setEdgeAndContentSizeFromAbsoluteContentSize:")]
+		void SetEdgeAndContentSizeFromAbsoluteContentSize (System.Drawing.SizeF actualContentSize);
+
+	}
+
+	[BaseType (typeof (GMGridViewLayoutStrategyBase))]
+	interface GMGridViewLayoutVerticalStrategy {
+
+	}
+
+	[BaseType (typeof (GMGridViewLayoutStrategyBase))]
+	interface GMGridViewLayoutHorizontalStrategy {
+
+	}
+
+	[BaseType (typeof (GMGridViewLayoutHorizontalStrategy))]
+	interface GMGridViewLayoutHorizontalPagedStrategy {
+
+		//- (NSInteger)positionForItemAtColumn:(NSInteger)column row:(NSInteger)row page:(NSInteger)page;
+		[Export ("positionForItemAtColumn:row:page:")]
+		int PositionForItemAtColumn (int column, int row, int page);
+
+		//- (NSInteger)columnForItemAtPosition:(NSInteger)position;
+		[Export ("columnForItemAtPosition:")]
+		int ColumnForItemAtPosition (int position);
+
+		//- (NSInteger)rowForItemAtPosition:(NSInteger)position;
+		[Export ("rowForItemAtPosition:")]
+		int RowForItemAtPosition (int position);
+
+	}
+
+	[BaseType (typeof (GMGridViewLayoutHorizontalPagedStrategy))]
+	interface GMGridViewLayoutHorizontalPagedLTRStrategy {
+
+	}
+
+	[BaseType (typeof (GMGridViewLayoutHorizontalPagedStrategy))]
+	interface GMGridViewLayoutHorizontalPagedTTBStrategy {
+
+	}
+	
+	// Additional properties not associated with classes
+	//@property (nonatomic, readonly) GMGridViewLayoutStrategyType type;
+	[Export ("type", ArgumentSemantic.ReadOnly)]
+	GMGridViewLayoutStrategyType Type { get;  }
+
+	//@property (nonatomic, readonly) CGSize itemSize;
+	[Export ("itemSize", ArgumentSemantic.ReadOnly)]
+	System.Drawing.SizeF ItemSize { get;  }
+
+	//@property (nonatomic, readonly) NSInteger itemSpacing;
+	[Export ("itemSpacing", ArgumentSemantic.ReadOnly)]
+	int ItemSpacing { get;  }
+
+	//@property (nonatomic, readonly) UIEdgeInsets minEdgeInsets;
+	[Export ("minEdgeInsets", ArgumentSemantic.ReadOnly)]
+	UIEdgeInsets MinEdgeInsets { get;  }
+
+	//@property (nonatomic, readonly) BOOL centeredGrid;
+	[Export ("centeredGrid", ArgumentSemantic.ReadOnly)]
+	bool CenteredGrid { get;  }
+
+	//@property (nonatomic, readonly) NSInteger itemCount;
+	[Export ("itemCount", ArgumentSemantic.ReadOnly)]
+	int ItemCount { get;  }
+
+	//@property (nonatomic, readonly) UIEdgeInsets edgeInsets;
+	[Export ("edgeInsets", ArgumentSemantic.ReadOnly)]
+	UIEdgeInsets EdgeInsets { get;  }
+
+	//@property (nonatomic, readonly) CGRect gridBounds;
+	[Export ("gridBounds", ArgumentSemantic.ReadOnly)]
+	System.Drawing.RectangleF GridBounds { get;  }
+
+	//@property (nonatomic, readonly) CGSize contentSize;
+	[Export ("contentSize", ArgumentSemantic.ReadOnly)]
+	System.Drawing.SizeF ContentSize { get;  }
+
+	//@property (nonatomic, readonly) NSInteger numberOfItemsPerRow;
+	[Export ("numberOfItemsPerRow", ArgumentSemantic.ReadOnly)]
+	int NumberOfItemsPerRow { get;  }
+
+	//@property (nonatomic, readonly) NSInteger numberOfItemsPerColumn;
+	[Export ("numberOfItemsPerColumn", ArgumentSemantic.ReadOnly)]
+	int NumberOfItemsPerColumn { get;  }
+
+	//@property (nonatomic, readonly) NSInteger numberOfItemsPerRow;
+	[Export ("numberOfItemsPerRow", ArgumentSemantic.ReadOnly)]
+	int NumberOfItemsPerRow { get;  }
+
+	//@property (nonatomic, readonly) NSInteger numberOfItemsPerPage;
+	[Export ("numberOfItemsPerPage", ArgumentSemantic.ReadOnly)]
+	int NumberOfItemsPerPage { get;  }
+
+	//@property (nonatomic, readonly) NSInteger numberOfPages;
+	[Export ("numberOfPages", ArgumentSemantic.ReadOnly)]
+	int NumberOfPages { get;  }
+	
+	
+	*/
 }
 
